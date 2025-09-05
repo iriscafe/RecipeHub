@@ -1,0 +1,50 @@
+{
+  "Recipe": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Identificador único da receita"
+      },
+      "name": {
+        "type": "string",
+        "description": "Nome da receita"
+      },
+      "description": {
+        "type": "string",
+        "description": "Descrição da receita"
+      },
+      "instructions": {
+        "type": "string",
+        "description": "Instruções de preparo"
+      },
+      "ingredients": {
+        "type": "string",
+        "description": "Ingredientes necessários"
+      },
+      "category": {
+        "type": "string",
+        "description": "Categoria da receita"
+      },
+      "subcategory": {
+        "type": "string",
+        "description": "Subcategoria da receita"
+      },
+      "tags": {
+        "type": "string",
+        "description": "Tags da receita"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Data de criação"
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Data de atualização"
+      }
+    },
+    "required": ["id", "name", "description"]
+  }
+}

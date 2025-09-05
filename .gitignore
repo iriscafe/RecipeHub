@@ -1,0 +1,12 @@
+# Binários compilados
+bin/
+
+# Banco de dados
+data/
+*.db
+
+# Arquivos de ambiente
+.env
+
+# Logs
+*.log
