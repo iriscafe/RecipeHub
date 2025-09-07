@@ -87,3 +87,33 @@ func (h *RecipeHandler) DeleteRecipe(c *gin.Context) {
 	
 	c.IndentedJSON(http.StatusOK, gin.H{"message": "Recipe deleted"})
 }
+
+// HealthCheck - Liveness probe
+func (h *RecipeHandler) HealthCheck(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"status": "healthy",
+		"service": "recipehub",
+		"timestamp": platform.GetCurrentTime(),
+	})
+}
+
+// ReadinessCheck - Readiness probe
+func (h *RecipeHandler) ReadinessCheck(c *gin.Context) {
+	// Verifica se o banco de dados está acessível
+	if platform.DB == nil {
+		platform.LogError("Database connection is nil")
+		c.JSON(http.StatusServiceUnavailable, gin.H{
+			"status": "not ready",
+			"reason": "database not connected",
+			"timestamp": platform.GetCurrentTime(),
+		})
+		return
+	}
+
+	platform.LogInfo("Readiness check passed")
+	c.JSON(http.StatusOK, gin.H{
+		"status": "ready",
+		"service": "recipehub",
+		"timestamp": platform.GetCurrentTime(),
+	})
+}

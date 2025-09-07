@@ -3,6 +3,7 @@ package platform
 import (
 	"log"
 	"os"
+	"time"
 )
 
 var Logger *log.Logger
@@ -17,4 +18,8 @@ func LogInfo(message string) {
 
 func LogError(message string) {
 	Logger.Printf("ERROR: %s", message)
+}
+
+func GetCurrentTime() string {
+	return time.Now().Format(time.RFC3339)
 }

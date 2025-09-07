@@ -23,6 +23,12 @@ func main() {
 	handler := recipes.NewRecipeHandler(service)
 
 	router := gin.Default()
+	
+	// Health check routes
+	router.GET("/health", handler.HealthCheck)
+	router.GET("/ready", handler.ReadinessCheck)
+	
+	// Recipe routes
 	router.GET("/recipes", handler.GetAllRecipes)
 	router.GET("/recipes/:id", handler.GetRecipeById)
 	router.POST("/recipes", handler.CreateRecipe)

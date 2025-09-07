@@ -38,7 +38,7 @@ deps:
 
 # Docker (opcional)
 docker-build:
-	docker build -f deployments/docker/Dockerfile -t recipehub .
+	docker build -f deployments/docker/Dockerfile -t iriscafe50/recipehub .
 
 docker-run:
 	docker run -p 8080:8080 recipehub
